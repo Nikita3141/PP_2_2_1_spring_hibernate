@@ -16,6 +16,11 @@ public class User {
    @Column(name = "last_name")
    private String lastName;
 
+
+   @OneToOne(mappedBy = "user",
+   cascade = CascadeType.ALL)
+   private Car car ;
+
    @Column(name = "email")
    private String email;
 
@@ -25,6 +30,25 @@ public class User {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
+   }
+
+   @Override
+   public String toString() {
+      return "User {" +
+              "id=" + id +
+              ", firstName='" + firstName + '\'' +
+              ", lastName='" + lastName + '\'' +
+              ", email='" + email + '\'' +
+              '}';
+   }
+
+   public Car getCar() {
+      return car;
+   }
+
+   public Car setCar(Car car) {
+      this.car = car;
+      return car;
    }
 
    public Long getId() {
